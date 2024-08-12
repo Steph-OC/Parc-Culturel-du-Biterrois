@@ -191,7 +191,7 @@ h6 {
 
 /* _base.scss */
 a {
-  color: blue;
+  color: var(--terre-fonce);
   text-decoration: none;
 }
 a:hover {
@@ -310,7 +310,7 @@ body {
   z-index: 1000;
   border-top-right-radius: 325px;
   border-bottom-right-radius: 350px;
-  /* Style pour les sous-éléments du menu */
+  /* sous-éléments du menu */
 }
 .navbar-menu ul {
   padding: 0;
@@ -328,22 +328,25 @@ body {
   text-decoration: underline;
 }
 .navbar-menu ul li.menu-item-has-children > ul {
-  padding-left: 40px; /* Décalage pour les sous-éléments */
+  padding-left: 40px;
 }
 .navbar-menu ul li.menu-item-has-children > ul > li a {
-  font-size: 25px; /* Taille de police réduite pour les sous-éléments */
+  font-size: 25px;
 }
 
 .navbar-item {
-  padding: 15px 20px;
+  padding: 5px;
   color: var(--jaune-clair);
 }
 .navbar-item img {
   margin-top: 20px;
+  background-color: var(--jaune-clair);
+  border-radius: 50px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.54);
 }
 
 .navbar.is-active .navbar-menu {
-  left: 0; /* Removed !important */
+  left: 0;
 }
 
 .navbar.is-active .navbar-burger span:nth-child(1) {
@@ -468,7 +471,6 @@ body {
   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.54);
 }
 
-/* Conteneur pour la carte et la légende */
 .map-container {
   display: flex;
   gap: 20px;
@@ -477,10 +479,9 @@ body {
 
 .map-column {
   flex: 3;
-  /* Prend 3 parts de l'espace disponible */
 }
 
-/* Colonne pour la légende */
+/* Colonne légende */
 .legend-column {
   flex: 1;
   background-color: #f8f8f8;
@@ -507,7 +508,7 @@ body {
   margin-right: 10px;
 }
 
-/* Styles pour la popup */
+/* Styles popup */
 .popup-content {
   text-align: center;
 }
@@ -701,17 +702,19 @@ input[type=submit].my-submit-button:hover {
 .site-header .site-title-logo .site-logo img {
   width: 300px;
   height: auto;
-  /* Ajout de l'animation */
-  animation: slideInLeft 1s ease-out;
+  animation: slideInRotate 2s ease-out;
+  transition: transform 0.3s ease-in-out;
+}
+.site-header .site-title-logo .site-logo img:hover {
+  transform: rotate(-3deg);
 }
 
-@keyframes slideInLeft {
+@keyframes slideInRotate {
   from {
-    transform: translateX(-100%); /* Commence en dehors de l'écran à gauche */
-    opacity: 0;
+    transform: translateX(-100%) rotate(-360deg);
   }
   to {
-    transform: translateX(0); /* Arrive à sa position normale */
+    transform: translateX(0) rotate(0deg);
     opacity: 1;
   }
 }

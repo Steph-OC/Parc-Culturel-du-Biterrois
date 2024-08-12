@@ -4,7 +4,6 @@
   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.54);
 }
 
-/* Conteneur pour la carte et la légende */
 .map-container {
   display: flex;
   gap: 20px;
@@ -13,10 +12,9 @@
 
 .map-column {
   flex: 3;
-  /* Prend 3 parts de l'espace disponible */
 }
 
-/* Colonne pour la légende */
+/* Colonne légende */
 .legend-column {
   flex: 1;
   background-color: #f8f8f8;
@@ -46,7 +44,7 @@
   }
 }
 
-/* Styles pour la popup */
+/* Styles popup */
 .popup-content {
   text-align: center;
 }

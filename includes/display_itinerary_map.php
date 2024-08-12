@@ -1,9 +1,10 @@
 <?php
-function display_itinerary_map() {
+function display_itinerary_map()
+{
     $points = []; // Initialisation du tableau $points
 
     $args = array(
-        'post_type' => 'itinerary', 
+        'post_type' => 'itinerary',
         'posts_per_page' => -1
     );
     $query = new WP_Query($args);
@@ -42,49 +43,85 @@ function display_itinerary_map() {
     }
 
     ob_start();
-    ?>
+?>
     <div id="itinerary-map" style="width: 100%; height: 600px;"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var map = L.map('itinerary-map').setView([43.298373, 3.109855], 11);
+            const map = L.map('itinerary-map').setView([43.285303, 3.085803], 11);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            var points = <?php echo json_encode($points); ?>;
+            // Initialiser le groupe de clusters avec personnalisation
+            const markers = L.markerClusterGroup({
+                maxClusterRadius: 150, // distance de regroupement
+                iconCreateFunction: function(cluster) {
+                    const childCount = cluster.getChildCount();
+
+                    let c = ' marker-cluster-';
+
+                    if (childCount < 10) {
+                        c += 'small';
+                    } else if (childCount < 100) {
+                        c += 'medium';
+                    } else {
+                        c += 'large';
+                    }
+
+                    return new L.DivIcon({
+                        html: '<div><span>' + childCount + '</span></div>',
+                        className: 'marker-cluster' + c,
+                        iconSize: new L.Point(40, 40)
+                    });
+                }
+            });
+
+            const points = <?php echo json_encode($points); ?>;
             points.forEach(function(point) {
-                var markerIcon = L.divIcon({
-                    className: `awesome-marker awesome-marker-icon-${point.color}`,
-                    html: `<i class="fa fa-${point.icon} icon-white"></i>`,
-                    iconSize: [35, 46],
-                    iconAnchor: [17.5, 46],
-                    popupAnchor: [0, -46]
+                // Ignorer les points avec une couleur null
+                if (!point.color) {
+                    return;
+                }
+
+                const markerIcon = L.AwesomeMarkers.icon({
+                    icon: point.icon, // Utilise l'icône définie pour l'itinéraire
+                    markerColor: point.color, // Utilise la couleur définie pour la catégorie
+                    prefix: 'fa',
+                    iconColor: 'white'
                 });
 
-                var marker = L.marker([point.lat, point.lng], { icon: markerIcon }).addTo(map);
+                const marker = L.marker([point.lat, point.lng], {
+                    icon: markerIcon
+                });
 
-                var popupContent = `
-                    <div style="text-align: center;">
-                        <img src="${point.photo_url}" alt="${point.title};">
-                        <h3 class="popup-title">${point.title}</h3>
-                        <a href="${point.permalink}" class="itinerary-link">En savoir plus</a>
-                    </div>
-                `;
+                const popupContent = `
+            <div style="text-align: center;">
+                <img src="${point.photo_url}" alt="${point.title}" style="width:100%; height:auto;">
+                <h3 class="popup-title">${point.title}</h3>
+                <a href="${point.permalink}" class="itinerary-link">Voir l'itinéraire</a>
+            </div>`;
 
                 marker.bindPopup(popupContent);
+
+                // Ajout le marqueur au groupe de clusters
+                markers.addLayer(marker);
             });
+
+            // Ajouter le groupe de clusters à la carte
+            map.addLayer(markers);
         });
     </script>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('itinerary_map', 'display_itinerary_map');
 
-function display_itinerary_legend() {
+function display_itinerary_legend()
+{
     $parent_category = get_term_by('name', 'Catégorie d\'itinéraire', 'itinerary_category');
-    
+
     if (!$parent_category) {
         return '<p>Catégorie parent non trouvée.</p>';
     }
@@ -96,7 +133,7 @@ function display_itinerary_legend() {
     ));
 
     ob_start();
-    ?>
+?>
     <ul>
         <?php
         foreach ($child_categories as $category) {
@@ -110,8 +147,7 @@ function display_itinerary_legend() {
         }
         ?>
     </ul>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('itinerary_legend', 'display_itinerary_legend');
-

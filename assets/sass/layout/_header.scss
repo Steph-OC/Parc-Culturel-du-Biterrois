@@ -28,47 +28,57 @@
     .site-logo {
       flex-shrink: 0;
       margin-left: auto;
+
       img {
         width: 300px;
         height: auto;
 
-        /* Ajout de l'animation */
-        animation: slideInLeft 1s ease-out;
+        animation: slideInRotate 2s ease-out;
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+          transform: rotate(-3deg);
+        }
       }
     }
+
+
+
   }
 }
-@keyframes slideInLeft {
+
+@keyframes slideInRotate {
   from {
-    transform: translateX(-100%); /* Commence en dehors de l'écran à gauche */
-    opacity: 0;
+    transform: translateX(-100%) rotate(-360deg);
   }
+
   to {
-    transform: translateX(0); /* Arrive à sa position normale */
+    transform: translateX(0) rotate(0deg);
     opacity: 1;
   }
 }
+
 .banner-grid {
   display: flex;
   flex-wrap: wrap;
   margin-left: 90px;
   margin-right: 0;
- background-color: #F8F8F4;
- box-shadow: 0 7px 15px rgba(0, 0, 0, 0.54);
+  background-color: #F8F8F4;
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.54);
 
   .banner-item {
-    width: calc(33.333% - 20px); // Ajustez selon vos besoins
+    width: calc(33.333% - 20px);
     margin: 10px;
     position: relative;
-    overflow: hidden; // Pour s'assurer que l'image ne dépasse pas de l'élément
+    overflow: hidden;
     background: #F8F8F4;
     box-shadow: 0 7px 15px rgba(0, 0, 0, 0.54);
 
     img {
       width: 100%;
-      height: auto; // Permettre une hauteur variable
+      height: auto;
       display: block;
-      object-fit: cover; // Remplir le conteneur tout en maintenant l'aspect ratio
+      object-fit: cover;
     }
 
     .image-title {

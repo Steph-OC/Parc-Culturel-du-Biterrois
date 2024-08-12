@@ -24,7 +24,7 @@ get_header();
                                 $thumbnail_url = wp_get_attachment_image_src($id, 'thumbnail')[0];
                                 $full_size = wp_get_attachment_image_src($id, 'full');
                                 $attachment = get_post($id);
-                                $image_caption = $attachment->post_excerpt; // Utilisez post_excerpt pour obtenir la légende
+                                $image_caption = $attachment->post_excerpt; 
 
                                 ?>
                                 <a href="<?php echo esc_url($full_size[0]); ?>" data-pswp-width="<?php echo esc_attr($full_size[1]); ?>" data-pswp-height="<?php echo esc_attr($full_size[2]); ?>" data-caption="<?php echo esc_attr($image_caption); ?>" class="photoswipe-gallery">

@@ -5,7 +5,6 @@ get_header();
 <div id="primary" class="content-area">
     <main id="main" class="site-main">
 
-        <!--<h2>Le Parc</h2>-->
         <div class="presentation-text">
             <?php
             if (have_posts()) :

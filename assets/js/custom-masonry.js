@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var elem = document.querySelector('.banner-grid');
-    var msnry = new Masonry(elem, {
+    const elem = document.querySelector('.banner-grid');
+    const msnry = new Masonry(elem, {
         itemSelector: '.banner-item',
         columnWidth: '.banner-item',
         percentPosition: true
