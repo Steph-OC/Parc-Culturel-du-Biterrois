@@ -1,0 +1,83 @@
+.agenda {
+    margin-top: 100px;
+
+    .articles-carousel {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 0;
+
+        .swiper-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .swiper-slide {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.54);
+            position: relative;
+            width: 800px;
+            height: 400px;
+
+            .slide-image {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .slide-content {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.5);
+                    color: #fff;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    padding: 20px;
+
+                    h4 {
+                        font-size: 1.5rem;
+                        margin-bottom: 10px;
+                        color: #fff;
+                    }
+
+                    p {
+                        font-size: 1rem;
+                        margin-bottom: 10px;
+                    }
+
+                    a {
+                        font-size: 1rem;
+                        color: #fff;
+                        text-decoration: underline;
+
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .swiper-pagination-bullet {
+            background: var(--bleu);
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--bleu);
+        }
+    }
+}

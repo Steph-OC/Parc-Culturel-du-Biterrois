@@ -1,0 +1,29 @@
+.itinerary-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.itinerary-card {
+    flex: 1 1 calc(33.333% - 20px);
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.itinerary-card:hover {
+    transform: scale(1.05);
+}
+
+.itinerary-card img {
+    width: 100%;
+    height: auto;
+}
+
+.itinerary-card h3 {
+    padding: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+}

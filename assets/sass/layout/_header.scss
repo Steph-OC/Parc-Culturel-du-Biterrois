@@ -1,0 +1,84 @@
+.site-header {
+  .site-title-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 90px;
+    //background-image: url("assets/images/fond-header.png");
+
+    .site-title {
+      flex-grow: 1;
+      text-align: center;
+
+      h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        color: var(--terre-fonce);
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin: 5px 0 20px;
+        color: var(--gris-ardoise);
+      }
+    }
+
+    .site-logo {
+      flex-shrink: 0;
+      margin-left: auto;
+      img {
+        width: 300px;
+        height: auto;
+
+        /* Ajout de l'animation */
+        animation: slideInLeft 1s ease-out;
+      }
+    }
+  }
+}
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%); /* Commence en dehors de l'écran à gauche */
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0); /* Arrive à sa position normale */
+    opacity: 1;
+  }
+}
+.banner-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 90px;
+  margin-right: 0;
+ background-color: #F8F8F4;
+ box-shadow: 0 7px 15px rgba(0, 0, 0, 0.54);
+
+  .banner-item {
+    width: calc(33.333% - 20px); // Ajustez selon vos besoins
+    margin: 10px;
+    position: relative;
+    overflow: hidden; // Pour s'assurer que l'image ne dépasse pas de l'élément
+    background: #F8F8F4;
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.54);
+
+    img {
+      width: 100%;
+      height: auto; // Permettre une hauteur variable
+      display: block;
+      object-fit: cover; // Remplir le conteneur tout en maintenant l'aspect ratio
+    }
+
+    .image-title {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(140, 142, 210, 0.6);
+      color: #fff;
+      padding: 5px 10px;
+      font-size: 1rem;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+/* Animation de fondu en entrée */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    opacity: 0; /* Départ de l'animation */
+    animation: fadeIn 2s ease-in-out forwards; /* Animation de fondu */
+  }
+  
+  .gallery-item {
+    margin-bottom: 10px;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.54);
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+  
+  /* Masquer les légendes sous les vignettes dans les galeries WordPress */
+  .gallery-item .wp-caption-text,
+  .gallery-item .gallery-caption {
+    display: none;
+  }
+  

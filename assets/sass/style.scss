@@ -1,0 +1,27 @@
+/*
+ Theme Name: Kadence Child
+ Template: kadence
+ Author: Stéphanie Quibel
+ Description: Thème enfant pour Kadence
+ Version: 1.0.0
+*/
+// style.scss
+
+// Import base styles
+@import 'base/variables';
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/base';
+
+// Import component styles
+@import 'components/navbar';
+@import 'components/carousel-articles';
+@import 'components/map';
+@import 'components/card-itinerary';
+@import 'components/contact-form';
+@import 'components/custom-gallery';
+
+// Import layout styles
+@import 'layout/header';
+@import 'layout/front-page';
+@import 'layout/footer';

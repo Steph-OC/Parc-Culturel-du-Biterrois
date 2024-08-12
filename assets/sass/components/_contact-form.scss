@@ -1,0 +1,59 @@
+/* Titre du formulaire de contact */
+.titre-contact {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--sable-clair);
+}
+
+/* Style personnalisé pour les champs de texte */
+input[type="text"].my-text-field, 
+input[type="email"].my-email-field, 
+textarea.my-textarea-field {
+    width: 100%; /* Largeur maximale */
+    padding: 10px; /* Padding */
+    margin: 0px 0 20px 0; /* Marge avec espace en bas */
+    border: none; /* Bordure */
+    border-radius: 4px; /* Bordure arrondie */
+    box-sizing: border-box; /* Box sizing */
+    background-color: var(--terre-fonce); /* Couleur de fond */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--sable-clair);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"].my-text-field:focus, 
+input[type="email"].my-email-field:focus, 
+textarea.my-textarea-field:focus {
+    color: var(--sable-clair); /* Couleur du texte lors du focus */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* Spécifique pour textarea */
+textarea.my-textarea-field {
+    height: 100px; /* Hauteur du textarea */
+    min-height: 100px; /* Hauteur minimale du textarea */
+    max-height: 300px; /* Hauteur maximale du textarea (optionnel) */
+}
+input.my-text-field:focus, 
+input.my-email-field:focus, 
+textarea.my-textarea-field:focus {
+    border-bottom: 2px solid var(--sable-clair); /* Couleur de la bordure lors du focus */
+    outline: none; /* Supprimer le contour par défaut */
+}
+
+
+/* Style pour le bouton de soumission */
+input[type="submit"].my-submit-button {
+    background-color: var(--sable-clair); /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 10px 20px; /* Padding */
+    border: none; /* Supprimer la bordure */
+    border-radius: 4px; /* Bordure arrondie */
+    cursor: pointer; /* Curseur pointeur */
+    font-size: 16px; /* Taille de police */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+input[type="submit"].my-submit-button:hover {
+    background-color: #45a049; /* Couleur de fond au survol */
+}

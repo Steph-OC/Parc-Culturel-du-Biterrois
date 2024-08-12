@@ -1,0 +1,42 @@
+/* _base.scss */
+a {
+    color: blue;
+    text-decoration: none;
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  button {
+    display: inline-block;
+    padding: 10px 20px; 
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: #555;
+    }
+  }
+  body {
+    background-color: var(--sable-tres-clair);
+    color: var(--gris-ardoise);
+  }
+  
+  .header {
+    background-color: var(--bleu-mediterranee);
+    color: var(--sable-tres-clair);
+  }
+  
+  .button-primary {
+    background-color: var(--terre-cuite-clair);
+    color: var(--sable-tres-clair);
+  }
+  
+  .button-secondary {
+    background-color: var(--jaune);
+    color: var(--gris-ardoise);
+  } 
+  
