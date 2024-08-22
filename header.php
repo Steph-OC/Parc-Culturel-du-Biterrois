@@ -48,31 +48,30 @@ if (!defined('ABSPATH')) {
             </div>
         </header>
 
-<!-- Bannière en grille -->
-<div class="banner-grid">
-    <?php
-    for ($i = 1; $i <= 5; $i++) {
-        $banner_image = get_theme_mod("mytheme_banner_image_$i");
-        $banner_text_title = get_theme_mod("mytheme_banner_text_title_$i");
-        $banner_text = get_theme_mod("mytheme_banner_text_$i");
-        if ($banner_image) {
-            echo '<div class="banner-item"><img src="' . esc_url($banner_image) . '" alt="Bannière">';
-            if ($banner_text_title || $banner_text) {
-                echo '<div class="image-title">';
-                if ($banner_text_title) {
-                    echo '<h2>' . esc_html($banner_text_title) . '</h2>';
+        <div class="banner-wrapper">
+            <div class="regular-banner">
+                <?php
+                for ($i = 1; $i <= 6; $i++) {
+                    $banner_image = get_theme_mod("mytheme_banner_image_$i");
+                    $banner_text_title = get_theme_mod("mytheme_banner_text_title_$i");
+                    if ($banner_image) {
+                ?>
+                        <div class="item">
+                            <div class="polaroid">
+                                <img src="<?php echo esc_url($banner_image); ?>" alt="<?php echo esc_attr($banner_text_title); ?>">
+                                <div class="caption"><?php echo esc_html($banner_text_title); ?></div>
+                            </div>
+                        </div>
+                <?php
+                    }
                 }
-                if ($banner_text) {
-                    echo '<p>' . esc_html($banner_text) . '</p>';
-                }
-                echo '</div>';
-            }
-            echo '</div>';
-        }
-    }
-    ?>
-</div>
+                ?>
+            </div>
+        </div>
 
+        <div class="ariane">
+            <?php if (function_exists('rank_math_the_breadcrumbs')) rank_math_the_breadcrumbs(); ?>
+        </div>
 
         <!-- Code HTML de la navbar -->
         <nav class="navbar is-dark is-vertical" role="navigation" aria-label="main navigation">

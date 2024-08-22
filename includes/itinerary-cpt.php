@@ -26,7 +26,10 @@ function register_itinerary_cpt() {
         'menu_position' => 5,
         'menu_icon' => 'dashicons-location-alt',
         'has_archive' => true,
-        'rewrite' => array('slug' => 'itineraires-sites'),
+       'rewrite' => array(
+            'slug' => 'itineraires-de-decouverte',
+            'with_front' => false
+        ),
         'show_in_rest' => true, // Important pour l'éditeur Gutenberg
         'taxonomies' => array('itinerary_category'), // Associe la taxonomie
     );

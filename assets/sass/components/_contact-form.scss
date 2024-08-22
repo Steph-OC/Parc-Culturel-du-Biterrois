@@ -57,3 +57,10 @@ input[type="submit"].my-submit-button {
 input[type="submit"].my-submit-button:hover {
     background-color: #45a049; /* Couleur de fond au survol */
 }
+.wpcf7-not-valid-tip {
+	color: #f4a7a7;
+	font-size: 1em;
+	font-weight: normal;
+	display: block;
+	/* background-color: antiquewhite; */
+}

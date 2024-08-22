@@ -2,22 +2,26 @@
 .map-section {
   margin-top: 100px;
   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.54);
+  background-color: #FFFFFF;
+  padding: 20px;
 }
 
 .map-container {
   display: flex;
   gap: 20px;
   margin-top: 20px;
+  flex-direction: row;
 }
 
 .map-column {
-  flex: 3;
+  flex: 2;
+  margin: 10px;
 }
 
 /* Colonne légende */
 .legend-column {
   flex: 1;
-  background-color: #f8f8f8;
+  background-color: #FFFFFF;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
@@ -25,6 +29,14 @@
   h3 {
     color: var(--terre-fonce);
     margin-bottom: 30px;
+  }
+
+  h4.category-name {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--terre-clair);
+    margin-top: 30px;
+    margin-bottom: 10px;
   }
 
   .legend-item {
@@ -40,39 +52,42 @@
       height: 15px;
       border-radius: 50%;
       margin-right: 10px;
+      background-color: currentColor;
     }
+
+    a {
+      text-decoration: none;
+      color: var(--gris-ardoise);
+      font-size: 15px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .filter-map.legend-color-link {
+      margin-left: 20px;
+      font-weight: 500;
+      font-size: 15px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &.show-all-markers a {
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+    }
+   
   }
 }
 
-/* Styles popup */
-.popup-content {
-  text-align: center;
-}
 
-.popup-img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-  border-radius: 5px;
-}
-
-.popup-title {
-  font-size: 18px;
-  margin: 10px 0px 10px 0px;
-  color: var(--terre-fonce);
-}
-
-.leaflet-popup-content .itinerary-link {
-  color: var(--sable-clair);
-  text-decoration: none;
-  background-color: var(--terre-clair);
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 16px;
-  box-shadow: 5px 2px 4px rgba(0, 0, 0, 0.24);
-
-  &:hover {
-    background-color: var(--sable-clair);
-    color: var(--terre-clair);
+@media (max-width: 1084px) {
+  .map-container {
+ 
+    flex-direction:column;
   }
 }

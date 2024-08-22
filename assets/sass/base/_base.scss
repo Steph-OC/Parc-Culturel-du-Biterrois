@@ -1,42 +1,75 @@
 /* _base.scss */
+
+/* Liens */
 a {
-    color: var(--terre-fonce);
-    text-decoration: none;
-  
-    &:hover {
-      text-decoration: underline;
-    }
+  color: var(--terre-fonce);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
   }
-  
-  button {
-    display: inline-block;
-    padding: 10px 20px; 
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  
-    &:hover {
-      background-color: #555;
-    }
+}
+
+/* Boutons */
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #555;
   }
-  body {
-    background-color: var(--sable-tres-clair);
-    color: var(--gris-ardoise);
+}
+
+/* Corps de la page */
+body {
+  background-color: var(--sable-tres-clair);
+  color: var(--gris-ardoise);
+  font-family: 'Helvetica', 'Arial', sans-serif;
+
+  p {
+    font-size: 1.06rem;
   }
-  
-  .header {
-    background-color: var(--bleu-mediterranee);
-    color: var(--sable-tres-clair);
-  }
-  
-  .button-primary {
+}
+
+/* En-tête */
+.header {
+  background-color: var(--bleu-mediterranee);
+  color: var(--sable-tres-clair);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Bouton principal */
+.button-primary {
+  background-color: var(--terre-cuite-clair);
+  color: var(--sable-tres-clair);
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
     background-color: var(--terre-cuite-clair);
-    color: var(--sable-tres-clair);
   }
-  
-  .button-secondary {
+}
+
+/* Bouton secondaire */
+.button-secondary {
+  background-color: var(--jaune);
+  color: var(--gris-ardoise);
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
     background-color: var(--jaune);
-    color: var(--gris-ardoise);
-  } 
-  
+  }
+}

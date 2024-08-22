@@ -61,22 +61,24 @@ body {
       align-self: flex-start;
     }
   }
+
   .text-menu {
     color: var(--terre-fonce);
   }
 }
 
 .navbar-menu {
-  display: flex;
+  display: none; /* Menu caché par défaut */
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   width: 600px;
   background-color: var(--sable-fonce);
   position: fixed;
   top: 0;
-  left: -600px;
+  left: -600px; /* Positionné hors de l'écran par défaut */
   height: 100%;
   padding-top: 100px;
+  padding-right: 50px;
   transition: left 0.3s ease-in-out;
   z-index: 1000;
   border-top-right-radius: 325px;
@@ -92,7 +94,7 @@ body {
       text-decoration: none;
       font-family: 'Shantell Sans', 'Helvetica', 'Arial', sans-serif;
       font-weight: 400;
-      font-size: 35px;
+      font-size: 2.19rem;
 
       &:hover {
         text-decoration: underline;
@@ -101,42 +103,57 @@ body {
   }
 
   /* sous-éléments du menu */
-  ul li.menu-item-has-children > ul {
-    padding-left: 40px; 
+  ul li.menu-item-has-children>ul {
+    padding-left: 40px;
   }
 
-  ul li.menu-item-has-children > ul > li a {
-    font-size: 25px; 
+  /* Style pour les sous-menus avec une flèche */
+  ul li.menu-item-has-children>ul>li::before {
+    content: '\21AA';
+    margin-right: 10px;
+    color: var(--jaune-clair);
+    font-size: 25px;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'Shantell Sans', 'Helvetica', 'Arial', sans-serif;
+  }
+
+  ul li.menu-item-has-children>ul>li a {
+    font-size: 25px;
+    color: var(--jaune-clair);
   }
 }
 
+/* Rendre le menu visible lorsque le burger est actif */
+.navbar.is-active .navbar-menu {
+  display: flex; /* Afficher le menu */
+  left: 0; /* Ramener le menu dans l'écran */
+}
+
 .navbar-item {
-  padding:5px;
+  padding: 5px;
   color: var(--jaune-clair);
 
   img {
     margin-top: 20px;
     background-color: var(--jaune-clair);
-    border-radius: 50px;
+    border-radius: 100%;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.54);
   }
 }
 
-.navbar.is-active .navbar-menu {
-  left: 0;
+.navbar-burger.is-active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
-.navbar.is-active .navbar-burger span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+.navbar-burger.is-active span:nth-child(2) {
+    opacity: 0;
 }
 
-.navbar.is-active .navbar-burger span:nth-child(2) {
-  opacity: 0;
+.navbar-burger.is-active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
-.navbar.is-active .navbar-burger span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
 
 #inner-wrap {
   margin-left: 90px;
@@ -145,8 +162,8 @@ body {
 }
 
 .vertical-column {
-  writing-mode: vertical-rl; /* Écriture verticale de droite à gauche */
-  text-orientation: upright; /* Orientation des caractères droite */
+  writing-mode: vertical-rl;
+  text-orientation: upright;
   padding: 1px;
   font-size: 1.2rem;
 }
@@ -169,4 +186,170 @@ body {
 
 .navbar-bottom .vertical-column {
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    width: 60px;
+    height: 60px;
+    top: 115px;
+    left: 0px;
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 35px;
+    border-radius: 0px 35px 35px 0px;
+  }
+
+  .navbar-menu {
+    display: none; /* Menu caché par défaut */
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    ul {
+      margin-top: 20px;
+      padding-left: 0;
+    }
+  }
+
+  /* Afficher le menu lorsque le burger est cliqué */
+  .navbar.is-active .navbar-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sable-fonce);
+    z-index: 1000;
+    padding: 2rem;
+  }
+  .navbar-menu ul {
+    margin-top: 140px;
+    padding-left: 0;
+  }
+
+  .navbar-menu ul li {
+    margin: 0;
+    padding: 0.5rem 0;
+  }
+
+  .navbar-menu ul li.menu-item-has-children>ul {
+    padding-left: 20px;
+    margin-top: 0;
+  }
+
+  .navbar-menu ul li.menu-item-has-children>ul>li {
+    margin: 0.2rem 0;
+  }
+
+  .navbar-menu ul li.menu-item-has-children>ul>li a {
+    font-size: 1.8rem;
+    padding: 0.3rem 0;
+  }
+
+  #inner-wrap {
+    margin-left: 0;
+  }
+
+  .navbar-bottom,
+  .vertical-column,
+  .navbar-item {
+    display: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  .navbar {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--sable-fonce);
+    z-index: 1001;
+  }
+
+  .navbar-menu {
+    display: none; /* Menu caché par défaut */
+    flex-direction: column;
+    align-items: flex-start; /* Alignement des éléments à gauche */
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    ul {
+      margin-top: 10px;
+      padding-left: 0;
+      width: 100%; /* S'assurer que le menu prend toute la largeur */
+    }
+  }
+
+  /* Afficher le menu lorsque le burger est cliqué */
+  .navbar.is-active .navbar-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sable-fonce);
+    z-index: 1000;
+    padding: 1.5rem;
+  }
+
+  .navbar-menu ul {
+    margin-top: 140px;
+    width: 100%;
+    margin-left: 10px;
+  }
+
+  .navbar-menu ul li {
+    margin: 0;
+    padding: 0.3rem 0;
+  }
+
+  .navbar-menu ul li a {
+    font-size: 1.5rem; /* Réduire la taille du texte */
+    white-space: normal; /* Permettre le retour à la ligne */
+    word-wrap: break-word; /* Couper les mots longs */
+    overflow-wrap: break-word; /* Casser les mots très longs */
+    line-height: 1.5; /* Espacement entre les lignes */
+    display: block;
+  }
+
+  .navbar-menu ul li.menu-item-has-children>ul {
+    padding-left: 0px;
+    margin-top: 0px;
+    width: 100%; /* S'assurer que le sous-menu prend toute la largeur disponible */
+  }
+
+  .navbar-menu ul li.menu-item-has-children>ul>li {
+    margin: 0.2rem 0;
+    display: flex;
+    flex-wrap: wrap; /* Permettre aux sous-menus de revenir à la ligne */
+  }
+
+  .navbar-menu ul li.menu-item-has-children>ul>li a {
+    font-size: 1.2rem; /* Réduire la taille du texte pour les sous-menus */
+    padding: 0.2rem 0;
+    white-space: normal; /* Permettre le retour à la ligne */
+    word-wrap: break-word; /* Couper les mots longs */
+    overflow-wrap: break-word; /* Casser les mots très longs */
+  }
+
+  #inner-wrap {
+    margin-left: 0;
+  }
+
+  .navbar-bottom,
+  .vertical-column,
+  .navbar-item {
+    display: none;
+  }
 }

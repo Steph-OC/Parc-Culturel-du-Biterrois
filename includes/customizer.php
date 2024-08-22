@@ -1,14 +1,15 @@
 <?php
 function mytheme_customize_register($wp_customize) {
-      // Ajout section pour la bannière
+    // Ajout section pour la bannière
     $wp_customize->add_section('mytheme_banner_section', array(
         'title' => __('Bannière', 'mytheme'),
         'priority' => 30,
         'description' => 'Téléverser les images et les titres pour la bannière.',
     ));
 
-    // Ajout plusieurs paramètres pour les images de la bannière
-    for ($i = 1; $i <= 5; $i++) {
+    // Ajout de plusieurs paramètres pour les images de la bannière
+    for ($i = 1; $i <= 6; $i++) {
+        // Paramètre pour l'image de la bannière
         $wp_customize->add_setting("mytheme_banner_image_$i", array(
             'default' => '',
             'sanitize_callback' => 'esc_url_raw'
@@ -20,6 +21,7 @@ function mytheme_customize_register($wp_customize) {
             'settings' => "mytheme_banner_image_$i",
         )));
 
+        // Paramètre pour le titre de l'image
         $wp_customize->add_setting("mytheme_banner_text_title_$i", array(
             'default' => '',
             'sanitize_callback' => 'sanitize_text_field'
@@ -31,7 +33,7 @@ function mytheme_customize_register($wp_customize) {
             'settings' => "mytheme_banner_text_title_$i",
             'type' => 'text'
         ));
-    }
 
+    }
 }
 add_action('customize_register', 'mytheme_customize_register');

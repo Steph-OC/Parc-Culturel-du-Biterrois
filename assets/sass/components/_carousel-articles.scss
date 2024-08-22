@@ -79,5 +79,31 @@
         .swiper-button-prev {
             color: var(--bleu);
         }
+
+        @media (max-width: 1024px) {
+            .swiper-slide {
+                width: 600px;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .swiper-slide {
+                width: 450px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .swiper-slide {
+                width: 300px;
+                height: 200px;
+            }
+
+        }
     }
+}
+
+.agenda .articles-carousel .swiper-slide .slide-image .slide-content {
+    padding: 0px;
 }

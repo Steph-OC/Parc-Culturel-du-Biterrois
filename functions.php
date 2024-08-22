@@ -25,15 +25,14 @@ function kadence_child_enqueue_assets()
   wp_enqueue_style('leaflet-markercluster-default-css', 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css');
   wp_enqueue_script('leaflet-markercluster-js', 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js', array('leaflet-js'), null, true);
 
-  // Enqueue Masonry JS
-  wp_enqueue_script('masonry-js', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', array(), null, true);
-
+  
   // Enqueue custom JavaScript
-  wp_enqueue_script('custom-masonry', get_stylesheet_directory_uri() . '/assets/js/custom-masonry.js', array('masonry-js'), null, true);
-  wp_enqueue_script('imagesloaded', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js', array('jquery'), null, true);
+ 
   wp_enqueue_script('custom-swiper', get_stylesheet_directory_uri() . '/assets/js/custom-swiper.js', array('swiper-js'), null, true);
   wp_enqueue_script('menu-js', get_stylesheet_directory_uri() . '/assets/js/menu.js', array(), null, true);
+  wp_enqueue_script('banner-js', get_stylesheet_directory_uri() . '/assets/js/banner.js', array(), null, true);
 }
+
 add_action('wp_enqueue_scripts', 'kadence_child_enqueue_assets');
 
 // Inclure les fichiers de fonctions
@@ -44,3 +43,13 @@ require_once get_stylesheet_directory() . '/includes/itinerary-cpt.php';
 require_once get_stylesheet_directory() . '/includes/display_itinerary_map.php';
 require_once get_stylesheet_directory() . '/includes/auto-taxonomy.php';
 require_once get_stylesheet_directory() . '/includes/link-clic-acf.php';
+require_once get_stylesheet_directory() . '/includes/dynamic-fields.php';
+
+function add_parallax_featured_image() {
+    if (has_post_thumbnail()) {
+        echo '<div class="parallax" style="background-image: url(' . get_the_post_thumbnail_url(get_the_ID(), 'full') . ');">';
+        echo '<h1>' . get_the_title() . '</h1>';
+        echo '</div>';
+    }
+}
+add_action('kadence_single_content_before', 'add_parallax_featured_image');

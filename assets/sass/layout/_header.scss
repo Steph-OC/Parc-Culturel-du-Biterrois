@@ -4,9 +4,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding-top: 10px;
     margin-left: 90px;
-    //background-image: url("assets/images/fond-header.png");
 
     .site-title {
       flex-grow: 1;
@@ -28,22 +27,20 @@
     .site-logo {
       flex-shrink: 0;
       margin-left: auto;
+      margin-right: 20px;
 
       img {
-        width: 300px;
+        width: 225px;
         height: auto;
-
+        margin-right: 20px;
         animation: slideInRotate 2s ease-out;
         transition: transform 0.3s ease-in-out;
 
         &:hover {
-          transform: rotate(-3deg);
+          transform: rotate(-3deg) scale(1.05);
         }
       }
     }
-
-
-
   }
 }
 
@@ -51,44 +48,239 @@
   from {
     transform: translateX(-100%) rotate(-360deg);
   }
-
   to {
     transform: translateX(0) rotate(0deg);
     opacity: 1;
   }
 }
 
-.banner-grid {
+/* Banner */
+.banner-wrapper {
+  margin-bottom: 50px;
+  padding-left: 115px;
+}
+.wrapper {
+  width: 100%;
+  padding: 0 2rem;
+  text-align: center;
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  margin-left: 90px;
-  margin-right: 0;
-  background-color: #F8F8F4;
-  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.54);
+  justify-content: center;
+  margin-left: 80px;
+ }
 
-  .banner-item {
-    width: calc(33.333% - 20px);
-    margin: 10px;
-    position: relative;
-    overflow: hidden;
-    background: #F8F8F4;
-    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.54);
+.item {
+  width: 30%;
+  display: inline-block;
+  position: relative;
+  filter: grayscale(100%);
+  z-index: 1;
+  transition: transform 0.35s ease-in-out;
+  margin-left: -15%;
+}
 
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-    }
+/* Ajustement des marges pour permettre le chevauchement */
+.item:nth-of-type(1) {
+  transform: scale(0.8) rotate(5deg) translateX(-10%);
+  margin-left: 0;
+}
 
-    .image-title {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      background: rgba(140, 142, 210, 0.6);
-      color: #fff;
-      padding: 5px 10px;
-      font-size: 1rem;
+.item:nth-of-type(2) {
+  transform: scale(0.8) rotate(-5deg) translateX(10%);
+}
+
+.item:nth-of-type(3) {
+  transform: scale(0.8) rotate(3deg) translateX(-5%);
+}
+
+.item:nth-of-type(4) {
+  transform: scale(0.8) rotate(-3deg) translateX(5%);
+}
+
+.item:nth-of-type(5) {
+  transform: scale(0.8) rotate(4deg) translateX(-7%);
+}
+
+.item:nth-of-type(6) {
+  transform: scale(0.8) rotate(-4deg) translateX(7%);
+}
+
+/* Réinitialisation à la position normale lors du survol */
+.item:hover {
+  filter: none;
+  transform: scale(1) rotate(0deg) translateX(0) !important;
+  z-index: 10;
+}
+
+.polaroid {
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.2);
+  position: relative;
+  max-width: 380px;
+  max-height: 380px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.polaroid>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 5px;
+  max-height: calc(100% - 40px);
+  margin-bottom: 10px; 
+}
+
+.caption {
+  font-size: 1rem;
+  text-align: center;
+  line-height: 2em;
+}
+
+/* Pour ajuster l'ombre du Polaroid selon sa rotation */
+.item .polaroid:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  transition: all 0.35s;
+}
+
+.item:nth-of-type(4n+1) .polaroid:before {
+  transform: rotate(6deg);
+  height: 20%;
+  width: 47%;
+  bottom: 30px;
+  right: 12px;
+  box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.4);
+}
+
+.item:nth-of-type(4n+2) .polaroid:before {
+  transform: rotate(-6deg);
+  height: 20%;
+  width: 47%;
+  bottom: 30px;
+  left: 12px;
+  box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.4);
+}
+
+.item:nth-of-type(4n+3) .polaroid:before {
+  transform: rotate(-4deg);
+  height: 20%;
+  width: 47%;
+  bottom: 30px;
+  left: 12px;
+  box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.item:nth-of-type(4n+4) .polaroid:before {
+  transform: rotate(4deg);
+  height: 20%;
+  width: 47%;
+  bottom: 30px;
+  right: 12px;
+  box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.ariane {
+  margin-left: 110px;
+}
+
+/****** Styles pour tablettes ******/
+@media (max-width: 1084px) {
+  .ariane {
+    margin-left: 10px;
+  }
+  .banner-wrapper {
+    margin-bottom: 50px;
+    padding-left: 0px;
+  }
+  .polaroid {
+    padding: 0.5rem;
+    height: 250px;
+    width: 250px;
+  }
+  .caption {
+    font-size: 1rem;
+    line-height: 1em;
+  }
+  .site-header .site-title-logo {
+    margin-left: 0px;
+    flex-wrap: wrap-reverse;
+
+    .site-logo {
+      flex-shrink: 0;
+      margin-left: 0px;
+      margin-right: 0px;
     }
   }
+}
+
+/* Swiper banner visible only on mobile */
+.banner-wrapper .swiper-container {
+  display: none; /* Hidden by default */
+}
+
+.banner-wrapper .regular-banner {
+  display: flex; /* Visible by default on larger screens */
+}
+
+/***** Style mobile *****/
+@media (max-width: 768px) {
+  .site-header .site-title-logo .site-logo img {
+    width: 170px;
+
+  }
+  .banner-wrapper .swiper-container {
+    display: block; /* Show Swiper on mobile */
+  }
+
+  .banner-wrapper .regular-banner {
+    display: none; /* Hide regular banner on mobile */
+  }
+}
+
+.swiper-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease;
+  filter: grayscale(100%);
+  margin-top: 60px;
+}
+.swiper-slide:hover {
+  filter: none; /* Supprimer l'effet de grisaille lors du survol */
+}
+
+.swiper-slide .polaroid {
+  width: 70%;
+  max-width: 250px;
+  margin: auto;
+}
+@media (min-width: 1800px) {
+  .banner-wrapper {
+  margin-bottom: 50px;
+  padding-left: 115px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .regular-banner {
+    width: 1800px;
+  }
+}
 }

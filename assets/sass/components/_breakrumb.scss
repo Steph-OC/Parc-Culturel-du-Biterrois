@@ -1,0 +1,59 @@
+/* Style global pour tous les fils d'Ariane */
+.rank-math-breadcrumb {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .rank-math-breadcrumb a {
+    color: #0073e6;
+    text-decoration: none;
+  }
+  
+  .rank-math-breadcrumb a:hover {
+    text-decoration: underline;
+    color: #005bb5;
+  }
+  
+  .rank-math-breadcrumb span.separator {
+    margin: 0 5px;
+    color: #999;
+  }
+  
+  .rank-math-breadcrumb .current {
+    color: #000;
+    font-weight: bold;
+  }
+  
+  /* Style spécifique pour les actualités */
+  body.post-type-archive-actualite .rank-math-breadcrumb,
+  body.single-actualite .rank-math-breadcrumb {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  body.post-type-archive-actualite .rank-math-breadcrumb a,
+  body.single-actualite .rank-math-breadcrumb a {
+    color: #ff6600;
+  }
+  
+  body.post-type-archive-actualite .rank-math-breadcrumb .current,
+  body.single-actualite .rank-math-breadcrumb .current {
+    color: #ff0000;
+  }
+  
+  /* Style spécifique pour les archives */
+  body.archive .rank-math-breadcrumb {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  body.archive .rank-math-breadcrumb a {
+    color: #009688;
+  }
+  
+  body.archive .rank-math-breadcrumb .current {
+    color: #004d40;
+  }
+  
