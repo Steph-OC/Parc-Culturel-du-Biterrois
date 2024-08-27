@@ -49,6 +49,27 @@ if (!defined('ABSPATH')) {
         </header>
 
         <div class="banner-wrapper">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <?php
+                    for ($i = 1; $i <= 6; $i++) {
+                        $banner_image = get_theme_mod("mytheme_banner_image_$i");
+                        $banner_text_title = get_theme_mod("mytheme_banner_text_title_$i");
+                        if ($banner_image) {
+                    ?>
+                            <div class="swiper-slide">
+                                <div class="polaroid">
+                                    <img src="<?php echo esc_url($banner_image); ?>" alt="<?php echo esc_attr($banner_text_title); ?>">
+                                    <div class="caption"><?php echo esc_html($banner_text_title); ?></div>
+                                </div>
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+
             <div class="regular-banner">
                 <?php
                 for ($i = 1; $i <= 6; $i++) {
@@ -69,8 +90,12 @@ if (!defined('ABSPATH')) {
             </div>
         </div>
 
-        <div class="ariane">
-            <?php if (function_exists('rank_math_the_breadcrumbs')) rank_math_the_breadcrumbs(); ?>
+        <div class="breadcrumb-container">
+            <?php
+            if (function_exists('my_custom_breadcrumb')) {
+                my_custom_breadcrumb(); // Votre fonction de fil d'Ariane personnalisé
+            }
+            ?>
         </div>
 
         <!-- Code HTML de la navbar -->

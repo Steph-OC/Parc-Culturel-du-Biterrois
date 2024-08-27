@@ -1,23 +1,80 @@
 .parallax {
-    height: 50vh; /* La hauteur de la section parallax */
-    background-attachment: fixed; /* L'effet parallax */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   
+  height: 50vh;
+  /* La hauteur de la section parallax */
+  background-attachment: fixed;
+  /* L'effet parallax */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.parallax h1 {
+  color: white;
+  font-size: 4rem;
+  text-align: center;
+  margin: 0;
+}
+
+.entry-content {
+  margin-top: 100px;
+}
+
+.back-to-map {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+ 
+
+  a {
+    display: inline-block;
+    padding: 10px 45px 10px 20px; 
+    background-color: var(--terre-fonce);
+    color: var(--sable-clair);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+
+    position: relative; 
+
+    &::after {
+      content: " >>"; 
+      opacity: 0; 
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; 
+      position: absolute; 
+      right: 20px; 
+      top: 50%; 
+      transform: translateY(-50%); 
+      color: inherit; 
+    }
+
+    &:hover {
+      background-color: var(--sable-clair);
+      color: var(--terre-fonce);
+
+      &::after {
+        opacity: 1; 
+        transform: translateY(-50%) translateX(5px); 
+      }
+    }
   }
-  
+}
+
+
+
+@media (max-width: 768px) {
   .parallax h1 {
-    color: white;
-    font-size: 75px;
-    text-align: center;
-    margin: 0;
+    font-size: 3rem;
   }
 
-  .entry-content {
-    margin-top: 100px;
+  #main {
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
   }
-  
+
+}

@@ -1,4 +1,5 @@
 <?php
+//Ajout categorie parente categorie itineraire pour tous le post itinéraires et sites
 function auto_set_default_taxonomy_term($post_id)
 {
     if (get_post_type($post_id) === 'itinerary') {

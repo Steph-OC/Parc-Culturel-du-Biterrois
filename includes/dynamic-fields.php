@@ -25,7 +25,15 @@ function add_dynamic_site_fields_script() {
                             });
 
                             if (isFilled) {
-                                fields.forEach(field => field.style.display = 'block');
+                                fields.forEach(field => {
+                                    field.style.display = 'block';
+
+                                    // Appliquer un style de fond alterné
+                                    field.style.backgroundColor = (i % 2 === 0) ? '#fff4ee' : '#eafde9'; // Fond alterné
+                                    field.style.borderBottom = '1px solid #ddd'; // Ligne de séparation entre les champs
+                                    field.style.padding = '10px';
+                                    field.style.marginBottom = '10px';
+                                });
                                 currentSiteIndex = i; // Mettre à jour l'index courant
                             } else {
                                 fields.forEach(field => field.style.display = 'none');
@@ -38,7 +46,15 @@ function add_dynamic_site_fields_script() {
                         if (currentSiteIndex < maxSites) {
                             currentSiteIndex++;
                             let fields = document.querySelectorAll(`[data-name*="_${currentSiteIndex}"]`);
-                            fields.forEach(field => field.style.display = 'block');
+                            fields.forEach(field => {
+                                field.style.display = 'block';
+
+                                // Appliquer un style de fond alterné
+                                field.style.backgroundColor = (currentSiteIndex % 2 === 0) ? '#f9f9f9' : '#ffffff';
+                                field.style.borderBottom = '1px solid #ddd';
+                                field.style.padding = '10px';
+                                field.style.marginBottom = '10px';
+                            });
                         }
                     }
 

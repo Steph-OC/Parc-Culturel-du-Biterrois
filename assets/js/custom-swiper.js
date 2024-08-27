@@ -46,6 +46,6 @@ const coverflowSwiper = new Swiper('.coverflow-carousel', {
             },
         }
     }
-});
+});  
 
-}); // Ajout de l'accolade fermante ici
+}); 

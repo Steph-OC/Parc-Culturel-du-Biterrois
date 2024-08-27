@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The single itinerary template file.
  *
@@ -7,14 +8,14 @@
 
 namespace Kadence;
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
     exit;
 }
 
 get_header();
 
 // Assurez-vous que les styles de contenu du thème sont appliqués.
-kadence()->print_styles( 'kadence-content' );
+kadence()->print_styles('kadence-content');
 
 // Afficher l'image mise en avant avec effet Parallax directement avant le contenu principal
 if (has_post_thumbnail()) : ?>
@@ -23,11 +24,15 @@ if (has_post_thumbnail()) : ?>
     </div>
 <?php endif; ?>
 
+<div class="back-to-map">
+    <a href="<?php echo esc_url(home_url('/#map-container')); ?>">Voir la carte</a>
+</div>
+
 <?php
 /**
  * Hook for everything, makes for better Elementor theming support.
  * Ce hook va utiliser la même structure de page que les articles.
  */
-do_action( 'kadence_single' );
+do_action('kadence_single');
 
 get_footer();

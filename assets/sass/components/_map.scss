@@ -26,9 +26,18 @@
   border-radius: 8px;
   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
 
-  h3 {
+  .popup-title {
     color: var(--terre-fonce);
     margin-bottom: 30px;
+  }
+
+  .text-legend {
+    margin-top: 80px;
+    font-size: 15px;
+
+    .icon-text {
+      font-size: 20px;
+    }
   }
 
   h4.category-name {
@@ -62,6 +71,9 @@
 
       &:hover {
         text-decoration: underline;
+      }
+      .icon-site {
+        font-size: 20px;
       }
     }
 

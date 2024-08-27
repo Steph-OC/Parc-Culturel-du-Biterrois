@@ -1,4 +1,5 @@
 <?php
+//lien dans les post itineraires et site pour le site latlong.net
 function make_acf_instructions_link_clickable($field)
 {
     if ($field['name'] == 'latitude') {

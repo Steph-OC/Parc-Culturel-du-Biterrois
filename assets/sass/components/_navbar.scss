@@ -68,14 +68,16 @@ body {
 }
 
 .navbar-menu {
-  display: none; /* Menu caché par défaut */
+  display: none;
+  /* Menu caché par défaut */
   flex-direction: column;
   align-items: flex-end;
   width: 600px;
   background-color: var(--sable-fonce);
   position: fixed;
   top: 0;
-  left: -600px; /* Positionné hors de l'écran par défaut */
+  left: -600px;
+  /* Positionné hors de l'écran par défaut */
   height: 100%;
   padding-top: 100px;
   padding-right: 50px;
@@ -126,8 +128,10 @@ body {
 
 /* Rendre le menu visible lorsque le burger est actif */
 .navbar.is-active .navbar-menu {
-  display: flex; /* Afficher le menu */
-  left: 0; /* Ramener le menu dans l'écran */
+  display: flex;
+  /* Afficher le menu */
+  left: 0;
+  /* Ramener le menu dans l'écran */
 }
 
 .navbar-item {
@@ -143,15 +147,15 @@ body {
 }
 
 .navbar-burger.is-active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
 .navbar-burger.is-active span:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
 }
 
 .navbar-burger.is-active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 
@@ -203,7 +207,8 @@ body {
   }
 
   .navbar-menu {
-    display: none; /* Menu caché par défaut */
+    display: none;
+    /* Menu caché par défaut */
     align-items: center;
     width: 100%;
     height: 100%;
@@ -229,6 +234,7 @@ body {
     z-index: 1000;
     padding: 2rem;
   }
+
   .navbar-menu ul {
     margin-top: 140px;
     padding-left: 0;
@@ -263,7 +269,13 @@ body {
     display: none;
   }
 }
+
 @media screen and (max-width: 480px) {
+  .navbar-burger .is-active {
+    top: 15%; // Ajustez cette valeur pour positionner la croix encore plus haut
+    transform: translateY(-50%); // Centrage vertical par rapport au nouveau `top`
+  }
+
   .navbar {
     width: 50px;
     height: 50px;
@@ -273,19 +285,28 @@ body {
     align-items: center;
     background-color: var(--sable-fonce);
     z-index: 1001;
+
+    .navbar-burger.is-active {
+      top: 0;
+      left: 70vw;
+      transform: translateY(-50%);
+    }
   }
 
   .navbar-menu {
-    display: none; /* Menu caché par défaut */
+    display: none;
+    /* Menu caché par défaut */
     flex-direction: column;
-    align-items: flex-start; /* Alignement des éléments à gauche */
+    align-items: flex-start;
+    /* Alignement des éléments à gauche */
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
 
     ul {
       margin-top: 10px;
       padding-left: 0;
-      width: 100%; /* S'assurer que le menu prend toute la largeur */
+      width: 100%;
+      /* S'assurer que le menu prend toute la largeur */
     }
   }
 
@@ -315,32 +336,43 @@ body {
   }
 
   .navbar-menu ul li a {
-    font-size: 1.5rem; /* Réduire la taille du texte */
-    white-space: normal; /* Permettre le retour à la ligne */
-    word-wrap: break-word; /* Couper les mots longs */
-    overflow-wrap: break-word; /* Casser les mots très longs */
-    line-height: 1.5; /* Espacement entre les lignes */
+    font-size: 1.5rem;
+    /* Réduire la taille du texte */
+    white-space: normal;
+    /* Permettre le retour à la ligne */
+    word-wrap: break-word;
+    /* Couper les mots longs */
+    overflow-wrap: break-word;
+    /* Casser les mots très longs */
+    line-height: 1.5;
+    /* Espacement entre les lignes */
     display: block;
   }
 
   .navbar-menu ul li.menu-item-has-children>ul {
     padding-left: 0px;
     margin-top: 0px;
-    width: 100%; /* S'assurer que le sous-menu prend toute la largeur disponible */
+    width: 100%;
+    /* S'assurer que le sous-menu prend toute la largeur disponible */
   }
 
   .navbar-menu ul li.menu-item-has-children>ul>li {
     margin: 0.2rem 0;
     display: flex;
-    flex-wrap: wrap; /* Permettre aux sous-menus de revenir à la ligne */
+    flex-wrap: wrap;
+    /* Permettre aux sous-menus de revenir à la ligne */
   }
 
   .navbar-menu ul li.menu-item-has-children>ul>li a {
-    font-size: 1.2rem; /* Réduire la taille du texte pour les sous-menus */
+    font-size: 1.2rem;
+    /* Réduire la taille du texte pour les sous-menus */
     padding: 0.2rem 0;
-    white-space: normal; /* Permettre le retour à la ligne */
-    word-wrap: break-word; /* Couper les mots longs */
-    overflow-wrap: break-word; /* Casser les mots très longs */
+    white-space: normal;
+    /* Permettre le retour à la ligne */
+    word-wrap: break-word;
+    /* Couper les mots longs */
+    overflow-wrap: break-word;
+    /* Casser les mots très longs */
   }
 
   #inner-wrap {

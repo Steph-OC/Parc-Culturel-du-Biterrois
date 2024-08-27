@@ -188,13 +188,13 @@
   box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.3);
 }
 
-.ariane {
+.breadcrumb-container {
   margin-left: 110px;
 }
 
 /****** Styles pour tablettes ******/
 @media (max-width: 1084px) {
-  .ariane {
+  .breadcrumb-container {
     margin-left: 10px;
   }
   .banner-wrapper {
@@ -235,14 +235,13 @@
 @media (max-width: 768px) {
   .site-header .site-title-logo .site-logo img {
     width: 170px;
-
   }
   .banner-wrapper .swiper-container {
     display: block; /* Show Swiper on mobile */
   }
 
   .banner-wrapper .regular-banner {
-    display: none; /* Hide regular banner on mobile */
+    display: none ; /* Hide regular banner on mobile */
   }
 }
 

@@ -218,7 +218,7 @@ function display_itinerary_legend() {
                             <i class="fa <?php echo esc_attr($itinerary['icon']); ?>" style="color: white;"></i>
                         </span>
                         <a href="<?php echo esc_url($itinerary['permalink']); ?>" style="color: var(--gris-ardoise);"><?php echo esc_html($itinerary['title']); ?></a>
-                        <a href="#" class="filter-map legend-color-link" data-itinerary-id="<?php echo esc_attr($itinerary['post_id']); ?>" style="color: <?php echo esc_attr($itinerary['color']); ?>;"><i class="fas fa-search-location"></i> Voir sur la carte</a>
+                        <a href="#" class="filter-map legend-color-link" data-itinerary-id="<?php echo esc_attr($itinerary['post_id']); ?>" style="color: <?php echo esc_attr($itinerary['color']); ?>;"><i class="fas fa-search-location icon-site"></i></a>
                     </li>
                     <?php
                 }

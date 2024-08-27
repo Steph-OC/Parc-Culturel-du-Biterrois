@@ -25,9 +25,7 @@ function kadence_child_enqueue_assets()
   wp_enqueue_style('leaflet-markercluster-default-css', 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css');
   wp_enqueue_script('leaflet-markercluster-js', 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js', array('leaflet-js'), null, true);
 
-  
   // Enqueue custom JavaScript
- 
   wp_enqueue_script('custom-swiper', get_stylesheet_directory_uri() . '/assets/js/custom-swiper.js', array('swiper-js'), null, true);
   wp_enqueue_script('menu-js', get_stylesheet_directory_uri() . '/assets/js/menu.js', array(), null, true);
   wp_enqueue_script('banner-js', get_stylesheet_directory_uri() . '/assets/js/banner.js', array(), null, true);
@@ -44,12 +42,5 @@ require_once get_stylesheet_directory() . '/includes/display_itinerary_map.php';
 require_once get_stylesheet_directory() . '/includes/auto-taxonomy.php';
 require_once get_stylesheet_directory() . '/includes/link-clic-acf.php';
 require_once get_stylesheet_directory() . '/includes/dynamic-fields.php';
-
-function add_parallax_featured_image() {
-    if (has_post_thumbnail()) {
-        echo '<div class="parallax" style="background-image: url(' . get_the_post_thumbnail_url(get_the_ID(), 'full') . ');">';
-        echo '<h1>' . get_the_title() . '</h1>';
-        echo '</div>';
-    }
-}
-add_action('kadence_single_content_before', 'add_parallax_featured_image');
+require_once get_stylesheet_directory() . '/includes/custom-breadcrumb.php';
+require_once get_stylesheet_directory() . '/includes/parallax-featured-image.php';

@@ -1,4 +1,5 @@
 <?php
+//retire le contrôle du header par kadence
 function kadence_child_remove_parent_functions() {
     remove_action( 'kadence_header', 'Kadence\header_markup', 10 );
 }

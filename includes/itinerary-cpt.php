@@ -1,5 +1,6 @@
 <?php
-function register_itinerary_cpt() {
+function register_itinerary_cpt()
+{
     $labels = array(
         'name' => __('Itinéraires et Sites', 'textdomain'),
         'singular_name' => __('Itinéraire ou Site', 'textdomain'),
@@ -26,7 +27,7 @@ function register_itinerary_cpt() {
         'menu_position' => 5,
         'menu_icon' => 'dashicons-location-alt',
         'has_archive' => true,
-       'rewrite' => array(
+        'rewrite' => array(
             'slug' => 'itineraires-de-decouverte',
             'with_front' => false
         ),
@@ -38,7 +39,8 @@ function register_itinerary_cpt() {
 }
 add_action('init', 'register_itinerary_cpt');
 
-function register_itinerary_taxonomy() {
+function register_itinerary_taxonomy()
+{
     $labels = array(
         'name' => _x('Catégories d\'itinéraires et sites', 'taxonomy general name', 'textdomain'),
         'singular_name' => _x('Catégorie d\'itinéraire ou site', 'taxonomy singular name', 'textdomain'),
