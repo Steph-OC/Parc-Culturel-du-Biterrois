@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
             icon: markerIcon
         }).bindPopup(`
             <div style="text-align: center;">
-                <img src="${point.photo_url}" alt="${point.site_title}" style="width:100%; height:auto;">
+                <img class="popup-img" src="${point.photo_url}" alt="${point.site_title}">
                 <h3 class="popup-title">${point.title}</h3>
                 <h4 class="popup-title">${point.site_title}</h4>
                 <a href="${point.permalink}" class="itinerary-link">Voir l'itinéraire</a>
