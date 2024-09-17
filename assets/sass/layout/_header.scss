@@ -48,6 +48,7 @@
   from {
     transform: translateX(-100%) rotate(-360deg);
   }
+
   to {
     transform: translateX(0) rotate(0deg);
     opacity: 1;
@@ -59,6 +60,7 @@
   margin-bottom: 50px;
   padding-left: 115px;
 }
+
 .wrapper {
   width: 100%;
   padding: 0 2rem;
@@ -67,7 +69,7 @@
   display: flex;
   justify-content: center;
   margin-left: 80px;
- }
+}
 
 .item {
   width: 30%;
@@ -135,7 +137,7 @@
   display: block;
   border-radius: 5px;
   max-height: calc(100% - 40px);
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 .caption {
@@ -189,7 +191,7 @@
 }
 
 .breadcrumb-container {
-  margin-left: 110px;
+  padding-left: 110px;
 }
 
 /****** Styles pour tablettes ******/
@@ -197,19 +199,23 @@
   .breadcrumb-container {
     margin-left: 10px;
   }
+
   .banner-wrapper {
     margin-bottom: 50px;
     padding-left: 0px;
   }
+
   .polaroid {
     padding: 0.5rem;
     height: 250px;
     width: 250px;
   }
+
   .caption {
     font-size: 1rem;
     line-height: 1em;
   }
+
   .site-header .site-title-logo {
     margin-left: 0px;
     flex-wrap: wrap-reverse;
@@ -224,24 +230,29 @@
 
 /* Swiper banner visible only on mobile */
 .banner-wrapper .swiper-container {
-  display: none; /* Hidden by default */
+  display: none;
 }
 
 .banner-wrapper .regular-banner {
-  display: flex; /* Visible by default on larger screens */
+  display: flex;
 }
 
 /***** Style mobile *****/
 @media (max-width: 768px) {
+  .breadcrumb-container {
+    padding-left: 5px;
+  }
+
   .site-header .site-title-logo .site-logo img {
     width: 170px;
   }
+
   .banner-wrapper .swiper-container {
-    display: block; /* Show Swiper on mobile */
+    display: block;
   }
 
   .banner-wrapper .regular-banner {
-    display: none ; /* Hide regular banner on mobile */
+    display: none;
   }
 }
 
@@ -261,8 +272,9 @@
   filter: grayscale(100%);
   margin-top: 60px;
 }
+
 .swiper-slide:hover {
-  filter: none; /* Supprimer l'effet de grisaille lors du survol */
+  filter: none;
 }
 
 .swiper-slide .polaroid {
@@ -270,16 +282,17 @@
   max-width: 250px;
   margin: auto;
 }
+
 @media (min-width: 1800px) {
   .banner-wrapper {
-  margin-bottom: 50px;
-  padding-left: 115px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    margin-bottom: 50px;
+    padding-left: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  .regular-banner {
-    width: 1800px;
+    .regular-banner {
+      width: 1800px;
+    }
   }
-}
 }

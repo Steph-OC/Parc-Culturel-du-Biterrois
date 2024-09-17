@@ -1,39 +1,74 @@
 <?php
 function kadence_child_enqueue_assets()
 {
-  // Enqueue the parent and child theme styles
-  wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
-  wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'));
+    // Enqueue parent and child theme styles
+    wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
+    wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'));
 
-  // Enqueue Font Awesome (kit)
-  wp_enqueue_script('font-awesome', 'https://kit.fontawesome.com/277d797764.js', array(), null, true);
+    // Enqueue Font Awesome
+    wp_enqueue_script('font-awesome', 'https://kit.fontawesome.com/277d797764.js', array(), null, true);
 
-  // Enqueue Swiper CSS and JS
-  wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
-  wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
+    // Enqueue Swiper CSS and JS
+    wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
 
-  // Enqueue Leaflet CSS and JS
-  wp_enqueue_style('leaflet-css', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
-  wp_enqueue_script('leaflet-js', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', array(), null, true);
+    // Enqueue Leaflet CSS and JS
+    if (is_front_page()) {
+        wp_enqueue_style('leaflet-css', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+        wp_enqueue_script('leaflet-js', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', array(), null, true);
 
-  // Enqueue Leaflet Awesome Markers CSS and JS
-  wp_enqueue_style('leaflet-awesome-markers-css', 'https://cdn.jsdelivr.net/npm/leaflet.awesome-markers@2.0.5/dist/leaflet.awesome-markers.css');
-  wp_enqueue_script('leaflet-awesome-markers-js', 'https://cdn.jsdelivr.net/npm/leaflet.awesome-markers@2.0.5/dist/leaflet.awesome-markers.js', array('leaflet-js'), null, true);
+        // Enqueue Leaflet.markercluster
+        wp_enqueue_style('leaflet-markercluster-css', 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css');
+        wp_enqueue_style('leaflet-markercluster-default-css', 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css');
+        wp_enqueue_script('leaflet-markercluster-js', 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js', array('leaflet-js'), null, true);
+    }
+    // Enqueue Leaflet Awesome Markers CSS and JS
+    wp_enqueue_style('leaflet-awesome-markers-css', 'https://cdn.jsdelivr.net/npm/leaflet.awesome-markers@2.0.5/dist/leaflet.awesome-markers.css');
+    wp_enqueue_script('leaflet-awesome-markers-js', 'https://cdn.jsdelivr.net/npm/leaflet.awesome-markers@2.0.5/dist/leaflet.awesome-markers.js', array('leaflet-js'), null, true);
 
-  // Enqueue Leaflet.markercluster
-  wp_enqueue_style('leaflet-markercluster-css', 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css');
-  wp_enqueue_style('leaflet-markercluster-default-css', 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css');
-  wp_enqueue_script('leaflet-markercluster-js', 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js', array('leaflet-js'), null, true);
-
-  // Enqueue custom JavaScript
-  wp_enqueue_script('custom-swiper', get_stylesheet_directory_uri() . '/assets/js/custom-swiper.js', array('swiper-js'), null, true);
-  wp_enqueue_script('menu-js', get_stylesheet_directory_uri() . '/assets/js/menu.js', array(), null, true);
-  wp_enqueue_script('banner-js', get_stylesheet_directory_uri() . '/assets/js/banner.js', array(), null, true);
+    // Enqueue custom JavaScript
+    wp_enqueue_script('custom-swiper', get_stylesheet_directory_uri() . '/assets/js/custom-swiper.js', array('swiper-js'), null, true);
+    wp_enqueue_script('menu-js', get_stylesheet_directory_uri() . '/assets/js/menu.js', array(), null, true);
+    wp_enqueue_script('banner-js', get_stylesheet_directory_uri() . '/assets/js/banner.js', array(), null, true);
+    wp_enqueue_script('animation-js', get_stylesheet_directory_uri() . '/assets/js/animation.js', array(), null, true);
 }
-
 add_action('wp_enqueue_scripts', 'kadence_child_enqueue_assets');
+// Modifie la longueur des extraits
+function my_custom_excerpt_length($length)
+{
+    return 11;
+}
+add_filter('excerpt_length', 'my_custom_excerpt_length', 999);
 
-// Inclure les fichiers de fonctions
+
+//hauteur automatique carte
+function enqueue_custom_map_script()
+{
+    wp_enqueue_script(
+        'custom-map-js',
+        get_stylesheet_directory_uri() . '/assets/js/custom-map.js',
+        array(),
+        null,
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_custom_map_script');
+
+
+//ancre fil d'ariane
+function enqueue_scroll_breadcrumb_script()
+{
+    wp_enqueue_script(
+        'scroll-breadcrumb-js',
+        get_stylesheet_directory_uri() . '/assets/js/scroll-breadcrumb.js',
+        array(),
+        null,
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_scroll_breadcrumb_script');
+
+
 require_once get_stylesheet_directory() . '/includes/remove-parent-functions.php';
 require_once get_stylesheet_directory() . '/includes/customizer.php';
 require_once get_stylesheet_directory() . '/includes/register-menus.php';

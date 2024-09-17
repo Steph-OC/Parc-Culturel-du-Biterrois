@@ -64,61 +64,6 @@
   width: 80%;
 }
 
-/* Styles pour le formulaire CF7 */
-#wpcf7-f306-o1 {
-  margin: 0px 20px 0px 20px;
-
-  .wpcf7-list-item {
-    display: inline-block;
-    margin: 0 0 0 1em;
-    margin: 7% auto;
-  }
-
-  .form-text {
-    margin-top: 20px;
-  }
-
-  .wpcf7-form-control.wpcf7-submit {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ccc;
-    border-radius: 3px;
-    background-color: #fff;
-    cursor: pointer;
-    position: relative;
-  }
-
-  input[type="checkbox"]:checked {
-    background-color: #fff;
-    border-color: var(--terre-clair);
-  }
-
-  input[type="checkbox"]:checked::before {
-    content: '✔';
-    color: var(--terre-clair);
-    position: absolute;
-    top: -2px;
-    left: 2px;
-    font-size: 16px;
-    font-weight: bold;
-  }
-}
-
 /* Styles pour les tablettes et mobiles */
 @media (max-width: 1084px) {
   .site-footer {

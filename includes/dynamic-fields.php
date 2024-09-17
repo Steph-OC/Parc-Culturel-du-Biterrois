@@ -1,40 +1,60 @@
 <?php
-function add_dynamic_site_fields_script() {
+function add_dynamic_site_fields_script()
+{
     global $pagenow, $post;
 
-    // Vérifier si nous sommes sur l'écran d'édition d'un itinéraire
+    // Vérifie si nous sommes sur l'écran d'édition d'un itinéraire
     if ($pagenow == 'post.php' || $pagenow == 'post-new.php') {
         if (get_post_type($post) == 'itinerary') {
-            ?>
+?>
             <script type="text/javascript">
                 document.addEventListener('DOMContentLoaded', function() {
                     const maxSites = 10; // Nombre maximum de sites
                     let currentSiteIndex = 1;
 
-                    // Fonction pour afficher les champs qui sont remplis
-                    function showFilledSiteFields() {
+                    // Fonction pour afficher les champs du marqueur (couleur et icône) en premier
+                    function showMarkerFields() {
+                        const markerFields = document.querySelectorAll(`[data-name="marker_color"], [data-name="marker_icon"]`);
+                        markerFields.forEach(field => {
+                            field.style.display = 'block';
+                            field.style.backgroundColor = '#eef5ff';
+                            field.style.borderBottom = '1px solid #ddd';
+                            field.style.padding = '10px';
+                            field.style.marginBottom = '10px';
+                        });
+                    }
+
+                    // Fonction pour afficher les autres champs qui sont remplis ou le premier groupe de champs par défaut
+                    function showFilledOrFirstSiteFields() {
+                        let firstFieldDisplayed = false;
+
                         for (let i = 1; i <= maxSites; i++) {
-                            let fields = document.querySelectorAll(`[data-name*="_${i}"]`);
+                            let fields = document.querySelectorAll(`[data-name="title-site_${i}"], [data-name="photo_${i}"], [data-name="longitude_${i}"], [data-name="latitude_${i}"]`);
+
+                            if (!fields.length) {
+                                console.warn(`Aucun champ trouvé pour l'index ${i}.`);
+                                continue;
+                            }
+
                             let isFilled = false;
 
                             fields.forEach(field => {
                                 const input = field.querySelector('input, textarea, select');
-                                if (input && input.value) {
+                                if (input && input.value.trim() !== '') {
                                     isFilled = true;
                                 }
                             });
 
-                            if (isFilled) {
+                            if (isFilled || i === 1) { // Toujours afficher le premier groupe de champs par défaut
                                 fields.forEach(field => {
                                     field.style.display = 'block';
-
-                                    // Appliquer un style de fond alterné
-                                    field.style.backgroundColor = (i % 2 === 0) ? '#fff4ee' : '#eafde9'; // Fond alterné
-                                    field.style.borderBottom = '1px solid #ddd'; // Ligne de séparation entre les champs
+                                    field.style.backgroundColor = (i % 2 === 0) ? '#ffffff' : '#eef5ff';
+                                    field.style.borderBottom = '1px solid #ddd';
                                     field.style.padding = '10px';
                                     field.style.marginBottom = '10px';
                                 });
-                                currentSiteIndex = i; // Mettre à jour l'index courant
+                                currentSiteIndex = i; // mise à jour l'index courant
+                                firstFieldDisplayed = true; // Assure que le premier champ est affiché
                             } else {
                                 fields.forEach(field => field.style.display = 'none');
                             }
@@ -45,52 +65,66 @@ function add_dynamic_site_fields_script() {
                     function showNextSiteFields() {
                         if (currentSiteIndex < maxSites) {
                             currentSiteIndex++;
-                            let fields = document.querySelectorAll(`[data-name*="_${currentSiteIndex}"]`);
+                            let fields = document.querySelectorAll(`[data-name="title-site_${currentSiteIndex}"], [data-name="photo_${currentSiteIndex}"], [data-name="longitude_${currentSiteIndex}"], [data-name="latitude_${currentSiteIndex}"]`);
+                            if (!fields.length) {
+                                console.warn(`Aucun champ trouvé pour l'index ${currentSiteIndex}.`);
+                                return;
+                            }
+
                             fields.forEach(field => {
                                 field.style.display = 'block';
-
-                                // Appliquer un style de fond alterné
                                 field.style.backgroundColor = (currentSiteIndex % 2 === 0) ? '#f9f9f9' : '#ffffff';
                                 field.style.borderBottom = '1px solid #ddd';
                                 field.style.padding = '10px';
                                 field.style.marginBottom = '10px';
                             });
+                        } else {
+                            console.warn('Nombre maximum de sites atteints.');
                         }
                     }
 
-                    // Afficher tous les champs déjà remplis
-                    showFilledSiteFields();
+                    // Affiche les champs de marqueur en premier
+                    showMarkerFields();
 
-                    // Trouver tous les conteneurs des champs de site
+                    // Affiche tous les champs déjà remplis ou le premier groupe de champs par défaut
+                    showFilledOrFirstSiteFields();
+
+                    // Trouve tous les conteneurs des champs de site
                     const fieldsContainers = document.querySelectorAll('.inside.acf-fields.-top > .acf-field[data-name*="title-site"]');
 
                     if (fieldsContainers.length > 0) {
-                        // Créer le bouton
                         const addButton = document.createElement('button');
                         addButton.type = 'button';
                         addButton.style.marginTop = '10px';
                         addButton.textContent = 'Ajouter un autre site';
 
-                        // Ajouter le bouton après le dernier champ de site
                         const lastContainer = fieldsContainers[fieldsContainers.length - 1];
-                        lastContainer.insertAdjacentElement('afterend', addButton);
+                        if (lastContainer) {
+                            lastContainer.insertAdjacentElement('afterend', addButton);
+                        } else {
+                            console.error('Impossible de trouver le dernier conteneur de champs pour ajouter le bouton.');
+                        }
 
                         addButton.addEventListener('click', function(e) {
                             e.preventDefault();
                             showNextSiteFields();
 
-                            // Déplacer le bouton à la fin des nouveaux champs
                             const updatedFieldsContainers = document.querySelectorAll('.inside.acf-fields.-top > .acf-field[data-name*="title-site"]');
                             const newLastContainer = updatedFieldsContainers[updatedFieldsContainers.length - 1];
-                            newLastContainer.insertAdjacentElement('afterend', addButton);
+                            if (newLastContainer) {
+                                newLastContainer.insertAdjacentElement('afterend', addButton);
+                            } else {
+                                console.error('Impossible de trouver le nouveau dernier conteneur de champs après mise à jour.');
+                            }
                         });
                     } else {
                         console.error('Conteneur des champs de site introuvable.');
                     }
                 });
             </script>
-            <?php
+<?php
         }
     }
 }
 add_action('admin_footer', 'add_dynamic_site_fields_script');
+?>

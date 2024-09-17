@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Configuration du swiper pour les mobiles uniquement
     if (window.innerWidth <= 768) { 
-        var swiper = new Swiper('.swiper-container', {
+        const swiper = new Swiper('.swiper-container', {
             effect: 'cards',
             grabCursor: true,
             centeredSlides: true,

@@ -259,6 +259,84 @@ body p {
   background-color: var(--jaune);
 }
 
+.img-amendata {
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease;
+}
+
+.img-amendata:hover {
+  transform: scale(0.95);
+  /* Changez la taille ou effectuez toute autre transformation CSS */
+}
+
+.video-3d {
+  display: inline-block;
+  /* Assure que la figure s'adapte à la taille de l'image et de la légende */
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  /* Optionnel : ajoute de l'espace autour de l'image et de la légende */
+  border-radius: 4px;
+  /* Optionnel : ajoute des coins arrondis à la figure */
+  background-color: #fff;
+  /* Optionnel : ajoute un fond pour rendre la légende plus lisible */
+}
+
+.video-3d img {
+  display: block;
+  width: 100%;
+}
+
+.video-3d figcaption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+.page-title,
+.post-home-title,
+.archive-title,
+.entry-title {
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: slideIn 1.2s ease-out forwards;
+  /* L'animation est définie ici mais non déclenchée */
+}
+
+.video-3d {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0.8;
+  transform: translateY(0); /* Pas de déplacement initial */
+}
+
+.video-3d:hover {
+  opacity: 1; /* L'opacité devient totale au survol */
+  transform: translateY(-10px); /* L'élément se déplace légèrement vers le haut */
+}
+
+/* Définir l'animation avec des keyframes */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+    /* Départ hors de la vue à gauche */
+  }
+  60% {
+    opacity: 0.5;
+    transform: translateX(20px);
+    /* Le texte dépasse légèrement sa position finale pour un effet plus dynamique */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    /* Position finale */
+  }
+}
+.entry-title.animate {
+  animation-play-state: running;
+  /* Démarre l'animation quand la classe est ajoutée */
+}
+
 html,
 body {
   height: 100%;
@@ -340,6 +418,7 @@ body {
   z-index: 1000;
   border-top-right-radius: 325px;
   border-bottom-right-radius: 350px;
+  box-shadow: 5px 0 5px -5px rgba(0, 0, 0, 0.75);
   /* sous-éléments du menu */
   /* Style pour les sous-menus avec une flèche */
 }
@@ -618,37 +697,49 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: opacity 0.3s ease;
 }
-.agenda .articles-carousel .swiper-slide .slide-image .slide-content {
+.agenda .articles-carousel .swiper-slide:hover .slide-content {
+  background: rgba(0, 0, 0, 0.4);
+}
+.agenda .articles-carousel .swiper-slide .slide-content {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  transition: background 0.3s ease;
 }
-.agenda .articles-carousel .swiper-slide .slide-image .slide-content h4 {
+.agenda .articles-carousel .swiper-slide .slide-content h4 {
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #fff;
 }
-.agenda .articles-carousel .swiper-slide .slide-image .slide-content p {
+.agenda .articles-carousel .swiper-slide .slide-content h5 {
   font-size: 1rem;
   margin-bottom: 10px;
+  color: #fff;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
 }
-.agenda .articles-carousel .swiper-slide .slide-image .slide-content a {
+.agenda .articles-carousel .swiper-slide .slide-content p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.agenda .articles-carousel .swiper-slide .slide-content a {
   font-size: 1rem;
   color: #fff;
   text-decoration: underline;
 }
-.agenda .articles-carousel .swiper-slide .slide-image .slide-content a:hover {
+.agenda .articles-carousel .swiper-slide .slide-content a:hover {
   text-decoration: none;
 }
 .agenda .articles-carousel .swiper-pagination-bullet {
@@ -658,6 +749,8 @@ body {
 .agenda .articles-carousel .swiper-button-prev {
   color: var(--bleu);
 }
+
+/* Media queries regroupées à la fin */
 @media (max-width: 1024px) {
   .agenda .articles-carousel .swiper-slide {
     width: 600px;
@@ -675,12 +768,36 @@ body {
     width: 300px;
     height: 200px;
   }
+  .agenda .articles-carousel .swiper-slide .slide-content {
+    padding: 0px;
+  }
+  .agenda .articles-carousel .swiper-slide .slide-content h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  .agenda .articles-carousel .swiper-slide .slide-content h5 {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+  .agenda .articles-carousel .swiper-slide .slide-content p {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+  .agenda .articles-carousel .swiper-slide .slide-content a {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    font-weight: 500;
+  }
 }
-
-.agenda .articles-carousel .swiper-slide .slide-image .slide-content {
-  padding: 0px;
-}
-
 /* Section de la carte */
 .map-section {
   margin-top: 100px;
@@ -694,11 +811,21 @@ body {
   gap: 20px;
   margin-top: 20px;
   flex-direction: row;
+  min-height: 500px; /* S'assure que les colonnes aient une hauteur minimale */
 }
 
 .map-column {
   flex: 2;
   margin: 10px;
+  display: flex; /* Assure que la carte s'étend sur toute la hauteur */
+  flex-direction: column;
+}
+
+#itinerary-map {
+  flex: 1; /* Prend toute la hauteur disponible dans la colonne */
+  width: 100%;
+  height: 100%; /* S'assure que la carte prend toute la hauteur disponible */
+  min-height: 300px; /* Ajoute une hauteur minimale pour éviter qu'elle ne disparaisse */
 }
 
 .popup-img {
@@ -714,6 +841,8 @@ body {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 .legend-column .popup-title {
   color: var(--terre-fonce);
@@ -777,6 +906,10 @@ body {
   .map-container {
     flex-direction: column;
   }
+  #itinerary-map {
+    height: 300px; /* Hauteur fixe pour éviter la disparition sur mobile */
+    min-height: 500px; /* Hauteur minimale sur mobile */
+  }
 }
 .itinerary-section {
   display: flex;
@@ -819,61 +952,145 @@ body {
 input[type=text].my-text-field,
 input[type=email].my-email-field,
 textarea.my-textarea-field {
-  width: 100%; /* Largeur maximale */
-  padding: 10px; /* Padding */
-  margin: 0px 0 20px 0; /* Marge avec espace en bas */
-  border: none; /* Bordure */
-  border-radius: 4px; /* Bordure arrondie */
-  box-sizing: border-box; /* Box sizing */
-  background-color: var(--terre-fonce); /* Couleur de fond */
+  width: 100%;
+  padding: 5px;
+  margin: 0px 0 10px 0;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: var(--terre-fonce);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid var(--sable-clair);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  transition: font-size 0.3s ease; /* Transition pour le texte */
 }
 
+/* Placeholder par défaut */
+input[type=text].my-text-field::placeholder,
+input[type=email].my-email-field::placeholder,
+textarea.my-textarea-field::placeholder {
+  font-size: 20px;
+  transition: font-size 0.3s ease;
+}
+
+/* Lorsque le champ reçoit le focus, agrandit le placeholder */
+input[type=text].my-text-field:focus::placeholder,
+input[type=email].my-email-field:focus::placeholder,
+textarea.my-textarea-field:focus::placeholder {
+  font-size: 16px; /* Taille agrandie du placeholder */
+  transition: font-size 0.3s ease;
+}
+
+/* Styles pour le focus des champs */
 input[type=text].my-text-field:focus,
 input[type=email].my-email-field:focus,
 textarea.my-textarea-field:focus {
-  color: var(--sable-clair); /* Couleur du texte lors du focus */
+  color: var(--sable-clair);
+  border-bottom: 2px solid var(--sable-clair);
+  outline: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Spécifique pour textarea */
 textarea.my-textarea-field {
-  height: 100px; /* Hauteur du textarea */
-  min-height: 100px; /* Hauteur minimale du textarea */
-  max-height: 300px; /* Hauteur maximale du textarea (optionnel) */
-}
-
-input.my-text-field:focus,
-input.my-email-field:focus,
-textarea.my-textarea-field:focus {
-  border-bottom: 2px solid var(--sable-clair); /* Couleur de la bordure lors du focus */
-  outline: none; /* Supprimer le contour par défaut */
+  height: 100px;
+  min-height: 100px;
+  max-height: 300px;
 }
 
 /* Style pour le bouton de soumission */
 input[type=submit].my-submit-button {
-  background-color: var(--sable-clair); /* Couleur de fond */
-  color: white; /* Couleur du texte */
-  padding: 10px 20px; /* Padding */
-  border: none; /* Supprimer la bordure */
-  border-radius: 4px; /* Bordure arrondie */
-  cursor: pointer; /* Curseur pointeur */
-  font-size: 16px; /* Taille de police */
+  background-color: var(--sable-clair);
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-input[type=submit].my-submit-button:hover {
-  background-color: #45a049; /* Couleur de fond au survol */
+/* Styles pour le formulaire CF7 */
+#wpcf7-f306-o1 {
+  margin: 0px 20px 0px 20px;
+  /* Checkbox styles */
+  /* Checkbox styles */
+}
+#wpcf7-f306-o1 .wpcf7-list-item {
+  display: inline-block;
+  margin: 4% auto;
+}
+#wpcf7-f306-o1 .form-text {
+  font-size: 15px;
+}
+#wpcf7-f306-o1 .wpcf7-form-control.wpcf7-submit {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+}
+#wpcf7-f306-o1 label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 15px;
+}
+#wpcf7-f306-o1 input[type=checkbox] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px; /* Taille réduite de la checkbox */
+  height: 16px; /* Taille réduite de la checkbox */
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  line-height: 16px; /* Centrer verticalement la croix */
+  font-size: 12px; /* Taille de la croix ajustée */
+}
+#wpcf7-f306-o1 input[type=checkbox]:checked {
+  background-color: #fff;
+  border-color: var(--terre-clair);
+}
+#wpcf7-f306-o1 input[type=checkbox]:checked::before {
+  content: "✔";
+  color: var(--terre-clair);
+  font-size: 10px; /* Ajuste la taille de la croix pour qu'elle corresponde à la taille réduite de la checkbox */
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrage horizontal et vertical de la croix */
 }
 
+/* Message d'erreur pour les champs invalides */
 .wpcf7-not-valid-tip {
-  color: #f4a7a7;
+  color: #fffbfb;
   font-size: 1em;
   font-weight: normal;
   display: block;
-  /* background-color: antiquewhite; */
+}
+
+/* Style pour le label des cases à cocher */
+.wpcf7-list-item-label {
+  font-size: 15px;
+}
+
+/* Style pour le spinner */
+.wpcf7-spinner {
+  visibility: hidden;
+  display: inline-block;
+  background-color: var(--sable-clair);
+  opacity: 0.75;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 100%;
+  padding: 0;
+  margin: 0 24px;
+  position: relative;
 }
 
 /* Animation de fondu en entrée */
@@ -1102,7 +1319,7 @@ input[type=submit].my-submit-button:hover {
 }
 
 .breadcrumb-container {
-  margin-left: 110px;
+  padding-left: 110px;
 }
 
 /****** Styles pour tablettes ******/
@@ -1144,6 +1361,9 @@ input[type=submit].my-submit-button:hover {
 
 /***** Style mobile *****/
 @media (max-width: 768px) {
+  .breadcrumb-container {
+    padding-left: 5px;
+  }
   .site-header .site-title-logo .site-logo img {
     width: 170px;
   }
@@ -1271,54 +1491,6 @@ input[type=submit].my-submit-button:hover {
   border: 0 solid currentColor;
   box-sizing: border-box;
   width: 80%;
-}
-
-/* Styles pour le formulaire CF7 */
-#wpcf7-f306-o1 {
-  margin: 0px 20px 0px 20px;
-}
-#wpcf7-f306-o1 .wpcf7-list-item {
-  display: inline-block;
-  margin: 0 0 0 1em;
-  margin: 7% auto;
-}
-#wpcf7-f306-o1 .form-text {
-  margin-top: 20px;
-}
-#wpcf7-f306-o1 .wpcf7-form-control.wpcf7-submit {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-}
-#wpcf7-f306-o1 label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-#wpcf7-f306-o1 input[type=checkbox] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #ccc;
-  border-radius: 3px;
-  background-color: #fff;
-  cursor: pointer;
-  position: relative;
-}
-#wpcf7-f306-o1 input[type=checkbox]:checked {
-  background-color: #fff;
-  border-color: var(--terre-clair);
-}
-#wpcf7-f306-o1 input[type=checkbox]:checked::before {
-  content: "✔";
-  color: var(--terre-clair);
-  position: absolute;
-  top: -2px;
-  left: 2px;
-  font-size: 16px;
-  font-weight: bold;
 }
 
 /* Styles pour les tablettes et mobiles */

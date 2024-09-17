@@ -6,61 +6,152 @@
 }
 
 /* Style personnalisé pour les champs de texte */
-input[type="text"].my-text-field, 
-input[type="email"].my-email-field, 
+input[type="text"].my-text-field,
+input[type="email"].my-email-field,
 textarea.my-textarea-field {
-    width: 100%; /* Largeur maximale */
-    padding: 10px; /* Padding */
-    margin: 0px 0 20px 0; /* Marge avec espace en bas */
-    border: none; /* Bordure */
-    border-radius: 4px; /* Bordure arrondie */
-    box-sizing: border-box; /* Box sizing */
-    background-color: var(--terre-fonce); /* Couleur de fond */
+    width: 100%;
+    padding: 5px;
+    margin: 0px 0 10px 0;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: var(--terre-fonce);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid var(--sable-clair);
+    font-size: 20px;
+    transition: font-size 0.3s ease;
+}
+
+/* Placeholder par défaut */
+input[type="text"].my-text-field::placeholder,
+input[type="email"].my-email-field::placeholder,
+textarea.my-textarea-field::placeholder {
+    font-size: 20px;
+    transition: font-size 0.3s ease;
+}
+
+input[type="text"].my-text-field:focus::placeholder,
+input[type="email"].my-email-field:focus::placeholder,
+textarea.my-textarea-field:focus::placeholder {
+    font-size: 16px;
+    transition: font-size 0.3s ease;
+}
+
+/* Styles pour le focus des champs */
+input[type="text"].my-text-field:focus,
+input[type="email"].my-email-field:focus,
+textarea.my-textarea-field:focus {
+    color: var(--sable-clair);
+    border-bottom: 2px solid var(--sable-clair);
+    outline: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-input[type="text"].my-text-field:focus, 
-input[type="email"].my-email-field:focus, 
-textarea.my-textarea-field:focus {
-    color: var(--sable-clair); /* Couleur du texte lors du focus */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
 /* Spécifique pour textarea */
 textarea.my-textarea-field {
-    height: 100px; /* Hauteur du textarea */
-    min-height: 100px; /* Hauteur minimale du textarea */
-    max-height: 300px; /* Hauteur maximale du textarea (optionnel) */
+    height: 100px;
+    min-height: 100px;
+    max-height: 300px;
 }
-input.my-text-field:focus, 
-input.my-email-field:focus, 
-textarea.my-textarea-field:focus {
-    border-bottom: 2px solid var(--sable-clair); /* Couleur de la bordure lors du focus */
-    outline: none; /* Supprimer le contour par défaut */
-}
-
 
 /* Style pour le bouton de soumission */
 input[type="submit"].my-submit-button {
-    background-color: var(--sable-clair); /* Couleur de fond */
-    color: white; /* Couleur du texte */
-    padding: 10px 20px; /* Padding */
-    border: none; /* Supprimer la bordure */
-    border-radius: 4px; /* Bordure arrondie */
-    cursor: pointer; /* Curseur pointeur */
-    font-size: 16px; /* Taille de police */
+    background-color: var(--sable-clair);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour le formulaire CF7 */
+#wpcf7-f306-o1 {
+    margin: 0px 20px 0px 20px;
+
+    .wpcf7-list-item {
+        display: inline-block;
+        margin: 4% auto;
+    }
+
+    .form-text {
+        font-size: 15px;
+    }
+
+    .wpcf7-form-control.wpcf7-submit {
+        display: block;
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 15px;
+    }
+
+    /* Checkbox styles */
+    input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #ccc;
+        border-radius: 3px;
+        background-color: #fff;
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        line-height: 16px;
+        font-size: 12px;
+    }
+
+    input[type="checkbox"]:checked {
+        background-color: #fff;
+        border-color: var(--terre-clair);
+    }
+
+    input[type="checkbox"]:checked::before {
+        content: '✔';
+        color: var(--terre-clair);
+        font-size: 10px;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
 }
 
-input[type="submit"].my-submit-button:hover {
-    background-color: #45a049; /* Couleur de fond au survol */
-}
+/* Message d'erreur pour les champs invalides */
 .wpcf7-not-valid-tip {
-	color: #f4a7a7;
-	font-size: 1em;
-	font-weight: normal;
-	display: block;
-	/* background-color: antiquewhite; */
+    color: #fffbfb;
+    font-size: 1em;
+    font-weight: normal;
+    display: block;
+}
+
+/* Style pour le label des cases à cocher */
+.wpcf7-list-item-label {
+    font-size: 15px;
+}
+
+/* Style pour le spinner */
+.wpcf7-spinner {
+    visibility: hidden;
+    display: inline-block;
+    background-color: var(--sable-clair);
+    opacity: 0.75;
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 100%;
+    padding: 0;
+    margin: 0 24px;
+    position: relative;
 }

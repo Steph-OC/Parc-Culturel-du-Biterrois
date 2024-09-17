@@ -12,6 +12,7 @@
 @import 'base/reset';
 @import 'base/typography';
 @import 'base/base';
+@import 'base/ajout';
 
 // Import component styles
 @import 'components/navbar';
@@ -26,4 +27,3 @@
 @import 'layout/front-page';
 @import 'layout/footer';
 @import 'layout/single-itinerary';
-@import 'layout/admin-style';

@@ -83,6 +83,7 @@ body {
   z-index: 1000;
   border-top-right-radius: 325px;
   border-bottom-right-radius: 350px;
+  box-shadow: 5px 0 5px -5px rgba(0, 0, 0, 0.75);
 
   ul {
     padding: 0;
@@ -124,10 +125,9 @@ body {
   }
 }
 
-/* Rendre le menu visible lorsque le burger est actif */
+
 .navbar-menu.is-active {
   transform: translateX(300px);
-  /* Cette ligne rend le menu visible en le ramenant à sa position d'origine */
 }
 
 .navbar-item {
@@ -212,18 +212,15 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    /* Make sure it is positioned correctly */
     background-color: var(--sable-fonce);
     z-index: 1000;
     padding-top: 100px;
     padding-right: 0;
-    /* Adjust padding for mobile */
     border-radius: 0;
   }
 
   .navbar-menu.is-active {
     transform: translateX(0);
-    /* Open menu for mobile */
   }
 
   .navbar-menu ul {
@@ -231,7 +228,6 @@ body {
     padding-left: 0;
     width: 100%;
     text-align: center;
-    /* Center align text on mobile */
   }
 
   .navbar-menu ul li {

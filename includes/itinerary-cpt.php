@@ -56,7 +56,7 @@ function register_itinerary_taxonomy()
     );
 
     $args = array(
-        'hierarchical' => true, // Comme les catégories
+        'hierarchical' => true, 
         'labels' => $labels,
         'show_ui' => true,
         'show_admin_column' => true,

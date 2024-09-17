@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const coverflowSwiper = new Swiper('.coverflow-carousel', {
     loop: true,
     autoplay: {
-        delay: 3000,
+        delay: 7000,
         disableOnInteraction: false,
     },
     effect: 'coverflow',

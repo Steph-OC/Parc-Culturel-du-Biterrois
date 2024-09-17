@@ -14,10 +14,9 @@ if (! defined('ABSPATH')) {
 
 get_header();
 
-// Assurez-vous que les styles de contenu du thème sont appliqués.
 kadence()->print_styles('kadence-content');
 
-// Afficher l'image mise en avant avec effet Parallax directement avant le contenu principal
+// Affiche l'image mise en avant avec effet Parallax directement avant le contenu principal
 if (has_post_thumbnail()) : ?>
     <div class="parallax" style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>');">
         <h1><?php the_title(); ?></h1>

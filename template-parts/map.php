@@ -6,11 +6,9 @@
         </div>
         <div class="legend-column">
             <h3>Légendes</h3>
-           
-          
             <?php echo do_shortcode('[itinerary_legend]'); ?>
-            <p class="text-legend"> Pour situer les sites sur la carte cliquer sur  <i class="fas fa-search-location icon-text"></i><br>
-            Pour voir la description cliquer sur le nom du site</p>
+            <p class="text-legend"> Pour situer les sites sur la carte cliquer sur <i class="fas fa-search-location icon-text"></i><br>
+                Pour voir la description cliquer sur le nom du site</p>
         </div>
     </div>
 </section>
