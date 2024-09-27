@@ -27,15 +27,6 @@
     color: #555;
 }
 
-.page-title,
-.post-home-title,
-.archive-title,
-.entry-title {
-    opacity: 0;
-    transform: translateX(-100px);
-    animation: slideIn 1.2s ease-out forwards;
-}
-
 .video-3d {
     transition: transform 0.5s ease, opacity 0.5s ease;
     opacity: 0.8;
@@ -45,6 +36,24 @@
 .video-3d:hover {
     opacity: 1;
     transform: translateY(-10px);
+}
+
+.page-title,
+.post-home-title,
+.archive-title,
+.entry-title {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+    /* Transition fluide */
+}
+
+.entry-title.animate,
+.page-title.animate,
+.post-home-title.animate,
+.archive-title.animate {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 @keyframes slideIn {
@@ -62,8 +71,4 @@
         opacity: 1;
         transform: translateX(0);
     }
-}
-
-.entry-title.animate {
-    animation-play-state: running;
 }
